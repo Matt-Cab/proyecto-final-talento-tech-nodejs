@@ -1,0 +1,25 @@
+{
+  "name": "proyecto-final-api-rest-talento-tech",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [],
+  "author": "Matias Gabriel Cabrera",
+  "repository": {
+    "type": "git"
+  },
+  "license": "MIT",
+  "type": "module",
+  "description": "Proyecto final de una REST API para Talento Tech",
+  "dependencies": {
+    "dotenv": "17.2.0",
+    "express": "5.1.0",
+    "firebase": "11.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "3.1.10"
+  }
+}
