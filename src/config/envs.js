@@ -11,7 +11,8 @@ export const envs = {
     appId: process.env.APPID,
   },
   secrets: {
-    
+    jwt_secret: process.env.JWT_SECRET || "qwedsazxcrfvtgbyhnujmiklop",
+    session: process.env.SESSION_KEY || "poikldmnbghjuytbgt"
   },
-  port: process.env.PORT || 3000,
+  port: process.env.PORT || 5000,
 };

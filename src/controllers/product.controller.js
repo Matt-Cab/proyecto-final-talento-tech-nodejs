@@ -16,6 +16,9 @@ const getProductById = async (req, res) => {
     if (!id) return res.status(400).json({ message: 'Debe ingresar un id.' });
 
     const product = await productService.getProduct(id);
+    if (!product)
+      return res.status(404).json({ message: 'Producto no encontrado.' });
+
     res.status(200).json({ message: 'Producto obtenido:', payload: product });
   } catch (error) {
     res
@@ -77,8 +80,12 @@ const deleteProduct = async (req, res) => {
   try {
     if (!id) return res.status(400).json({ message: 'Debe ingresar un id.' });
 
-    const product = await productService.deleteById(id);
-    res.status(200).json({ message: 'Producto ELIMINADO:', payload: product });
+    const response = await productService.deleteById(id);
+
+    if (response.deleted === false)
+      return res.status(404).json({ message: response.message });
+
+    return res.status(200).json({ message: response.message });
   } catch (error) {
     res
       .status(500)

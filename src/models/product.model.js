@@ -60,7 +60,17 @@ export const updateProduct = async (id, product) => {
 export const deleteProduct = async (id) => {
   try {
     const productRef = doc(db, COLLECTION_NAME, id);
-    return await deleteDoc(productRef);
+    const docSnap = await getDoc(productRef);
+
+    if (docSnap.exists()) {
+      await deleteDoc(docRef);
+      return { message: 'Documento eliminado con éxito', deleted: true };
+    } else {
+      return {
+        message: 'El documento no existe, no se puede eliminar',
+        deleted: false,
+      };
+    }
   } catch (error) {
     throw new Error(error.message);
   }
